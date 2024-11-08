@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_09f97om" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.27.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.21.0">
+  <bpmn:process id="Lekarz" name="Lekarz" isExecutable="true" camunda:historyTimeToLive="180">
+    <bpmn:startEvent id="StartEvent_1" name="Nowa wizyta">
+      <bpmn:outgoing>Flow_05ilvoj</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0rob8vo" messageRef="Message_0jeoi45" />
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_05ilvoj" sourceRef="StartEvent_1" targetRef="forkBramka" />
+    <bpmn:parallelGateway id="forkBramka">
+      <bpmn:incoming>Flow_05ilvoj</bpmn:incoming>
+      <bpmn:outgoing>Flow_1g3nequ</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0oxmrhr</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_1g3nequ" sourceRef="forkBramka" targetRef="lekarzMarek" />
+    <bpmn:intermediateCatchEvent id="lekarzMarek">
+      <bpmn:incoming>Flow_1g3nequ</bpmn:incoming>
+      <bpmn:outgoing>Flow_0iiox7x</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1ss30zj">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT3S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:intermediateCatchEvent id="lekarzWojtek">
+      <bpmn:incoming>Flow_0oxmrhr</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pwkvtc</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1nwob80">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT3S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:sequenceFlow id="Flow_0oxmrhr" sourceRef="forkBramka" targetRef="lekarzWojtek" />
+    <bpmn:sequenceFlow id="Flow_0iiox7x" sourceRef="lekarzMarek" targetRef="lekarzMarekOut" />
+    <bpmn:scriptTask id="lekarzMarekOut" name="Lekarz Marek" camunda:resultVariable="lekarzForm">
+      <bpmn:incoming>Flow_0iiox7x</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p3dapi</bpmn:outgoing>
+      <bpmn:script>${"dr. Marek Wojciechowski"}</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:scriptTask id="lekarzWojtekOut" name="Lekarz Wojciech" camunda:resultVariable="lekarzForm">
+      <bpmn:incoming>Flow_1pwkvtc</bpmn:incoming>
+      <bpmn:outgoing>Flow_0r4rlfd</bpmn:outgoing>
+      <bpmn:script>${"dr. Wojciech Markowski"}</bpmn:script>
+    </bpmn:scriptTask>
+    <bpmn:sequenceFlow id="Flow_1pwkvtc" sourceRef="lekarzWojtek" targetRef="lekarzWojtekOut" />
+    <bpmn:sequenceFlow id="Flow_0p3dapi" sourceRef="lekarzMarekOut" targetRef="JoinGateway" />
+    <bpmn:parallelGateway id="JoinGateway" name="JoinGateway">
+      <bpmn:incoming>Flow_0p3dapi</bpmn:incoming>
+      <bpmn:incoming>Flow_0r4rlfd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1bqk2rd</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_0r4rlfd" sourceRef="lekarzWojtekOut" targetRef="JoinGateway" />
+    <bpmn:sequenceFlow id="Flow_1bqk2rd" sourceRef="JoinGateway" targetRef="endMsg" />
+    <bpmn:endEvent id="endMsg">
+      <bpmn:incoming>Flow_1bqk2rd</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0opr4dq" messageRef="Message_1l43bod" camunda:class="pl.hospital.OdwolanieCallback" />
+    </bpmn:endEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_0jeoi45" name="nowaWizytaMsgg" />
+  <bpmn:message id="Message_1l43bod" name="wynikNowaWizytaMsg" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Lekarz">
+      <bpmndi:BPMNShape id="Event_1ey5du4_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="159" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="166" y="202" width="62" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0svi92i_di" bpmnElement="forkBramka">
+        <dc:Bounds x="265" y="152" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15ec6q5_di" bpmnElement="lekarzMarek">
+        <dc:Bounds x="362" y="82" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_07s6dt2" bpmnElement="lekarzWojtek">
+        <dc:Bounds x="362" y="222" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_15ucmxa_di" bpmnElement="lekarzMarekOut">
+        <dc:Bounds x="450" y="60" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_0ivhwo1" bpmnElement="lekarzWojtekOut">
+        <dc:Bounds x="450" y="200" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0rza26b_di" bpmnElement="JoinGateway">
+        <dc:Bounds x="625" y="152" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="539" y="167" width="65" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1y3zud9_di" bpmnElement="endMsg">
+        <dc:Bounds x="752" y="159" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_05ilvoj_di" bpmnElement="Flow_05ilvoj">
+        <di:waypoint x="215" y="177" />
+        <di:waypoint x="265" y="177" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1g3nequ_di" bpmnElement="Flow_1g3nequ">
+        <di:waypoint x="290" y="152" />
+        <di:waypoint x="290" y="100" />
+        <di:waypoint x="362" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0oxmrhr_di" bpmnElement="Flow_0oxmrhr">
+        <di:waypoint x="290" y="202" />
+        <di:waypoint x="290" y="240" />
+        <di:waypoint x="362" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0iiox7x_di" bpmnElement="Flow_0iiox7x">
+        <di:waypoint x="398" y="100" />
+        <di:waypoint x="450" y="100" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pwkvtc_di" bpmnElement="Flow_1pwkvtc">
+        <di:waypoint x="398" y="240" />
+        <di:waypoint x="450" y="240" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p3dapi_di" bpmnElement="Flow_0p3dapi">
+        <di:waypoint x="550" y="100" />
+        <di:waypoint x="650" y="100" />
+        <di:waypoint x="650" y="152" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r4rlfd_di" bpmnElement="Flow_0r4rlfd">
+        <di:waypoint x="550" y="240" />
+        <di:waypoint x="650" y="240" />
+        <di:waypoint x="650" y="202" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1bqk2rd_di" bpmnElement="Flow_1bqk2rd">
+        <di:waypoint x="675" y="177" />
+        <di:waypoint x="752" y="177" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

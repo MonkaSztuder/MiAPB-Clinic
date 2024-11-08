@@ -3,7 +3,7 @@
 ## Koncepcja aplikacji do zarządzania wizytami w przychodni.
 
 ### Plan procesu BPN:
- ![tym](image.png)
+![donechyba](image-1.png)
  ---------
 
 ### Work:
@@ -14,4 +14,4 @@ In progress
  - [x] Zdarzenie zegarowe
  - [x] Podproces wbudowany
  - [x] Obsługa wyjątków
- - [ ] Podproces zewnętrzny 
+ - [x] Podproces zewnętrzny 
