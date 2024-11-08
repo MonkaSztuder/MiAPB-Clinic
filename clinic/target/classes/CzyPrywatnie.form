@@ -1,0 +1,34 @@
+{
+  "components": [
+    {
+      "label": "Czy chciałbyś umówić wizytę prywatną?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1yh6zo5",
+        "columns": null
+      },
+      "id": "Field_17amgfe",
+      "key": "czyPrywatnie"
+    },
+    {
+      "label": "Uzasadnienie braku kwalifikacji",
+      "type": "textarea",
+      "layout": {
+        "row": "Row_0t22pvu",
+        "columns": null
+      },
+      "id": "Field_1yxl3os",
+      "key": "uzasadnienieBrakuKwalifikacjiNFZ",
+      "readonly": true
+    }
+  ],
+  "type": "default",
+  "id": "CzyPrywatnie",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

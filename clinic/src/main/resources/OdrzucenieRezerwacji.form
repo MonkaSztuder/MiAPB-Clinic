@@ -8,7 +8,8 @@
         "columns": null
       },
       "id": "Field_0q8s6vl",
-      "key": "imieForm"
+      "key": "imieForm",
+      "readonly": true
     },
     {
       "label": "Nazwisko",
@@ -18,7 +19,8 @@
         "columns": null
       },
       "id": "Field_1waeaqb",
-      "key": "nazwiskoForm"
+      "key": "nazwiskoForm",
+      "readonly": true
     },
     {
       "label": "Decyzja",
@@ -28,7 +30,8 @@
         "columns": null
       },
       "id": "Field_1h2nfx9",
-      "key": "decyzjaForm"
+      "key": "decyzjaForm",
+      "readonly": true
     },
     {
       "label": "Uzasadnienie Decyzji",
@@ -38,7 +41,8 @@
         "columns": null
       },
       "id": "Field_16z8xdd",
-      "key": "uzasadnienieDecyzjiForm"
+      "key": "uzasadnienieDecyzjiForm",
+      "readonly": true
     }
   ],
   "type": "default",

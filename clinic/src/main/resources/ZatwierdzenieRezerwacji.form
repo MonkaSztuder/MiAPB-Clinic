@@ -8,7 +8,8 @@
         "columns": null
       },
       "id": "Field_1niu02h",
-      "key": "imieForm"
+      "key": "imieForm",
+      "readonly": true
     },
     {
       "label": "Nazwisko",
@@ -18,16 +19,19 @@
         "columns": null
       },
       "id": "Field_0e2zwbx",
-      "key": "nazwiskoForm"
+      "key": "nazwiskoForm",
+      "readonly": true
     },
     {
-      "label": "Termin Wizyty",
-      "type": "textfield",
+      "subtype": "date",
+      "dateLabel": "Termin Wizyty",
+      "label": "Date time",
+      "type": "datetime",
       "layout": {
-        "row": "Row_1jgcfwy",
+        "row": "Row_12bhnzh",
         "columns": null
       },
-      "id": "Field_1x7j8vn",
+      "id": "Field_11czxlm",
       "key": "terminForm"
     },
     {
@@ -38,7 +42,7 @@
         "columns": null
       },
       "id": "Field_16dayfj",
-      "key": "czyPotwierdzoneFomr",
+      "key": "czyPotwierdzoneForm",
       "defaultValue": false
     }
   ],
