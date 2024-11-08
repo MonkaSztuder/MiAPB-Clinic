@@ -8,7 +8,8 @@
         "columns": null
       },
       "id": "Field_1niu02h",
-      "key": "imieForm"
+      "key": "imieForm",
+      "readonly": true
     },
     {
       "label": "Nazwisko",
@@ -18,17 +19,19 @@
         "columns": null
       },
       "id": "Field_0e2zwbx",
-      "key": "nazwiskoForm"
+      "key": "nazwiskoForm",
+      "readonly": true
     },
     {
       "label": "Termin Wizyty",
       "type": "textfield",
       "layout": {
-        "row": "Row_1jgcfwy",
+        "row": "Row_1nvk649",
         "columns": null
       },
-      "id": "Field_1x7j8vn",
-      "key": "terminForm"
+      "id": "Field_0ii88p5",
+      "key": "terminForm",
+      "readonly": true
     },
     {
       "label": "Potwierdzenie terminu wizyty",
@@ -38,7 +41,7 @@
         "columns": null
       },
       "id": "Field_16dayfj",
-      "key": "czyPotwierdzoneFomr",
+      "key": "czyPotwierdzoneForm",
       "defaultValue": false
     }
   ],

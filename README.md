@@ -11,7 +11,7 @@ In progress
  - [x] Szablon aplikacji
  - [x] Tabela decyzyjna
  - [ ] Testy jednostkowe
- - [ ] Zdarzenie zegarowe
- - [ ] Podproces wbudowany
- - [ ] Obsługa wyjątków
+ - [x] Zdarzenie zegarowe
+ - [x] Podproces wbudowany
+ - [x] Obsługa wyjątków
  - [ ] Podproces zewnętrzny 

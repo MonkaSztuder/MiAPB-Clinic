@@ -45,15 +45,13 @@
       "readonly": true
     },
     {
-      "subtype": "date",
-      "dateLabel": "Termin Wizyty",
-      "label": "Date time",
-      "type": "datetime",
+      "label": "Termin Wizyty",
+      "type": "textfield",
       "layout": {
-        "row": "Row_00g9r40",
+        "row": "Row_0if53x8",
         "columns": null
       },
-      "id": "Field_1r2rfl7",
+      "id": "Field_0sla4pd",
       "key": "terminForm",
       "readonly": true
     },

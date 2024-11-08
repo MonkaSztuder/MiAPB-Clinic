@@ -23,16 +23,15 @@
       "readonly": true
     },
     {
-      "subtype": "date",
-      "dateLabel": "Termin Wizyty",
-      "label": "Date time",
-      "type": "datetime",
+      "label": "Termin Wizyty",
+      "type": "textfield",
       "layout": {
-        "row": "Row_12bhnzh",
+        "row": "Row_1nvk649",
         "columns": null
       },
-      "id": "Field_11czxlm",
-      "key": "terminForm"
+      "id": "Field_0ii88p5",
+      "key": "terminForm",
+      "readonly": true
     },
     {
       "label": "Potwierdzenie terminu wizyty",

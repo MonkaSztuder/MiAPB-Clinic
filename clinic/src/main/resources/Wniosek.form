@@ -31,18 +31,6 @@
       "key": "wiekFrom"
     },
     {
-      "subtype": "date",
-      "dateLabel": "Data ostatniej wizyty",
-      "label": "Date time",
-      "type": "datetime",
-      "layout": {
-        "row": "Row_0o44hr0",
-        "columns": null
-      },
-      "id": "Field_0eyqiaq",
-      "key": "ostatniaWizytaForm"
-    },
-    {
       "label": "czy Ubezpieczony?",
       "type": "checkbox",
       "layout": {

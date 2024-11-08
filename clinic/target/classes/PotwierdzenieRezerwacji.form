@@ -1,0 +1,79 @@
+{
+  "components": [
+    {
+      "label": "Imie",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0p2cw73",
+        "columns": null
+      },
+      "id": "Field_1tjd3zm",
+      "key": "imieForm",
+      "readonly": true
+    },
+    {
+      "label": "Nazwisko",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_12cxpbg",
+        "columns": null
+      },
+      "id": "Field_1m2xqdw",
+      "key": "nazwiskoForm",
+      "readonly": true
+    },
+    {
+      "label": "Czy ubezpieczony?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0vyb68x",
+        "columns": 7
+      },
+      "id": "Field_0lvnoz8",
+      "key": "czyUbezpieczony",
+      "readonly": true
+    },
+    {
+      "label": "Czy Termin Potwierdzony?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0vyb68x",
+        "columns": null
+      },
+      "id": "Field_0hqyfck",
+      "key": "czyPotwierdzoneForm",
+      "readonly": true
+    },
+    {
+      "label": "Termin Wizyty",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0if53x8",
+        "columns": null
+      },
+      "id": "Field_0sla4pd",
+      "key": "terminForm",
+      "readonly": true
+    },
+    {
+      "label": "Lekarz",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_161fnu9",
+        "columns": null
+      },
+      "id": "Field_12brw8h",
+      "key": "lekarzForm",
+      "readonly": true
+    }
+  ],
+  "type": "default",
+  "id": "PotwierdzenieRezerwacji",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

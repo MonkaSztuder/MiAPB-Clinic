@@ -13,37 +13,48 @@
         </inputExpression>
       </input>
       <output id="Output_1" label="czyKwalifikacja" name="czyKwalifikacja" typeRef="boolean" />
-      <rule id="DecisionRule_1e7znkc">
-        <inputEntry id="UnaryTests_0ttyru3">
-          <text>&lt; 60</text>
-        </inputEntry>
-        <inputEntry id="UnaryTests_0hmxpvu">
-          <text>false</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0gna2se">
-          <text>false</text>
-        </outputEntry>
-      </rule>
       <rule id="DecisionRule_0abw4q0">
         <inputEntry id="UnaryTests_1byjsg8">
           <text>&gt;=60</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1yi34dp">
-          <text>false</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_00ure12">
           <text>true</text>
         </outputEntry>
       </rule>
-      <rule id="DecisionRule_0mn8xe6">
-        <inputEntry id="UnaryTests_1q2rs0g">
+      <rule id="DecisionRule_1e7znkc">
+        <inputEntry id="UnaryTests_0ttyru3">
+          <text>[50..60[</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0hmxpvu">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gna2se">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1neh3ee">
+        <inputEntry id="UnaryTests_1c0ayfp">
+          <text>&lt;60</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lr394h">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0nwtpkr">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_058b4um">
+        <inputEntry id="UnaryTests_0kticm0">
+          <text>&lt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0omztei">
           <text></text>
         </inputEntry>
-        <inputEntry id="UnaryTests_0xe0whd">
-          <text>true</text>
-        </inputEntry>
-        <outputEntry id="LiteralExpression_0dhdhbk">
-          <text>true</text>
+        <outputEntry id="LiteralExpression_1d2h50f">
+          <text>false</text>
         </outputEntry>
       </rule>
     </decisionTable>

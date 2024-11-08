@@ -23,17 +23,6 @@
       "readonly": true
     },
     {
-      "label": "Decyzja",
-      "type": "checkbox",
-      "layout": {
-        "row": "Row_11zwifq",
-        "columns": null
-      },
-      "id": "Field_1h2nfx9",
-      "key": "decyzjaForm",
-      "readonly": true
-    },
-    {
       "label": "Uzasadnienie Decyzji",
       "type": "textfield",
       "layout": {
@@ -42,7 +31,8 @@
       },
       "id": "Field_16z8xdd",
       "key": "uzasadnienieDecyzjiForm",
-      "readonly": true
+      "readonly": true,
+      "defaultValue": "Anulowano Rezerwację Wizyty"
     }
   ],
   "type": "default",
