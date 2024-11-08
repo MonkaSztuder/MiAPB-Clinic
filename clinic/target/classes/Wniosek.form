@@ -1,0 +1,65 @@
+{
+  "components": [
+    {
+      "label": "Imie",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1go7ybt",
+        "columns": null
+      },
+      "id": "Field_01e859d",
+      "key": "imieForm"
+    },
+    {
+      "label": "Nazwisko",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0bdxo53",
+        "columns": null
+      },
+      "id": "Field_18o22au",
+      "key": "nazwiskoForm"
+    },
+    {
+      "label": "Wiek",
+      "type": "number",
+      "layout": {
+        "row": "Row_07mfmsq",
+        "columns": null
+      },
+      "id": "Field_0vxpuxt",
+      "key": "wiekFrom"
+    },
+    {
+      "subtype": "date",
+      "dateLabel": "Data ostatniej wizyty",
+      "label": "Date time",
+      "type": "datetime",
+      "layout": {
+        "row": "Row_0o44hr0",
+        "columns": null
+      },
+      "id": "Field_0eyqiaq",
+      "key": "ostatniaWizytaForm"
+    },
+    {
+      "label": "czy Ubezpieczony?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_0mpe2y5",
+        "columns": null
+      },
+      "id": "Field_0yckxxb",
+      "key": "czyUbezpieczony"
+    }
+  ],
+  "type": "default",
+  "id": "Wniosek",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

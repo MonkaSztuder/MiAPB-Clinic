@@ -1,0 +1,53 @@
+{
+  "components": [
+    {
+      "label": "Imie",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jixqhl",
+        "columns": null
+      },
+      "id": "Field_0q8s6vl",
+      "key": "imieForm"
+    },
+    {
+      "label": "Nazwisko",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_12bilwk",
+        "columns": null
+      },
+      "id": "Field_1waeaqb",
+      "key": "nazwiskoForm"
+    },
+    {
+      "label": "Decyzja",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_11zwifq",
+        "columns": null
+      },
+      "id": "Field_1h2nfx9",
+      "key": "decyzjaForm"
+    },
+    {
+      "label": "Uzasadnienie Decyzji",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_0tpvw5x",
+        "columns": null
+      },
+      "id": "Field_16z8xdd",
+      "key": "uzasadnienieDecyzjiForm"
+    }
+  ],
+  "type": "default",
+  "id": "OdrzucenieRezerwacji",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}

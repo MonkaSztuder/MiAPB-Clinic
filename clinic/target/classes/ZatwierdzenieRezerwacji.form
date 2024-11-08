@@ -1,0 +1,54 @@
+{
+  "components": [
+    {
+      "label": "Imie",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_12a1ehq",
+        "columns": null
+      },
+      "id": "Field_1niu02h",
+      "key": "imieForm"
+    },
+    {
+      "label": "Nazwisko",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_09j4ton",
+        "columns": null
+      },
+      "id": "Field_0e2zwbx",
+      "key": "nazwiskoForm"
+    },
+    {
+      "label": "Termin Wizyty",
+      "type": "textfield",
+      "layout": {
+        "row": "Row_1jgcfwy",
+        "columns": null
+      },
+      "id": "Field_1x7j8vn",
+      "key": "terminForm"
+    },
+    {
+      "label": "Potwierdzenie terminu wizyty",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1nbvs5t",
+        "columns": null
+      },
+      "id": "Field_16dayfj",
+      "key": "czyPotwierdzoneFomr",
+      "defaultValue": false
+    }
+  ],
+  "type": "default",
+  "id": "ZatwierdzenieRezerwacji",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.27.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.21.0",
+  "schemaVersion": 16
+}
