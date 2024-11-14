@@ -32,7 +32,7 @@
       "id": "Field_16z8xdd",
       "key": "uzasadnienieDecyzjiForm",
       "readonly": true,
-      "defaultValue": "Anulowano Rezerwację Wizyty"
+      "defaultValue": "Brak wymaganych zgód"
     }
   ],
   "type": "default",

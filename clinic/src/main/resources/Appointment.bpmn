@@ -12,84 +12,51 @@
         <bpmn:flowNodeRef>Event_1c1mzrk</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_17bcg2w" name="chory">
-        <bpmn:flowNodeRef>start</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>czyKwalifikacjaNFZ</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_15l4dy0</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>WprowadzenieDanychPlatnosci</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_00ul3l2</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_05nfbxl</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>czyUmuwicWizytePrywatnie</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>odrzucenieWizyty</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0532tvn</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0cv23tq</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>potwierdzenieWizyty</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_04izz00</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>odebraniePotwierdzeniaRezerwacjiWizyty</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>start</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>czyUmuwicWizytePrywatnie</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_06op5i5</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>czyKwalifikacjaNFZ</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_15l4dy0</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0hmm2i9</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1t8ck6v" name="przychodnia">
-        <bpmn:flowNodeRef>Activity_0ik3dem</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>AppPowiadomLekarza</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>odebranieLekarzMsg</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_0ik3dem</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="start" camunda:formRef="Wniosek" camunda:formRefBinding="latest" camunda:initiator="inicjator">
-      <bpmn:outgoing>Flow_122dno5</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:exclusiveGateway id="czyKwalifikacjaNFZ" name="czy Kwalifikacja na NFZ?" default="Flow_01ps1gv">
-      <bpmn:incoming>Flow_1mao395</bpmn:incoming>
-      <bpmn:outgoing>Flow_1npr8q9</bpmn:outgoing>
-      <bpmn:outgoing>Flow_01ps1gv</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:businessRuleTask id="Activity_15l4dy0" name="Ocena Wniosku" camunda:decisionRef="OcenaWnioskuDec">
-      <bpmn:extensionElements>
-        <camunda:inputOutput>
-          <camunda:outputParameter name="czyKwalifikacja">${decisionResult.getSingleResult().czyKwalifikacja}</camunda:outputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_122dno5</bpmn:incoming>
-      <bpmn:outgoing>Flow_1mao395</bpmn:outgoing>
-    </bpmn:businessRuleTask>
     <bpmn:userTask id="WprowadzenieDanychPlatnosci" name="Wprowadzenie danych do płatności" camunda:assignee="${inicjator}">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="oplata_nrKonta" label="nrKonta" type="string" />
           <camunda:formField id="oplata_kwota" label="Kwota" type="long" />
-          <camunda:formField id="oplata_czyZgoda" label="Czy zgadzasz się na przetwarzanie danych osobowych?" type="boolean" />
-          <camunda:formField id="oplata_status" label="Status płatności" type="string" />
         </camunda:formData>
         <camunda:inputOutput>
           <camunda:outputParameter name="uzasadnienieDecyzjiForm">${"Nie zaakceptowałeś wymaganych zgód"}</camunda:outputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0kc4lad</bpmn:incoming>
-      <bpmn:outgoing>Flow_04pyo8w</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1l5tp7u</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_00ul3l2" default="Flow_1e9dnsp">
       <bpmn:incoming>Flow_07j7tu7</bpmn:incoming>
       <bpmn:outgoing>Flow_1e9dnsp</bpmn:outgoing>
       <bpmn:outgoing>Flow_0kc4lad</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_05nfbxl" name="Czy zgoda" default="Flow_14l5yzq">
-      <bpmn:incoming>Flow_04pyo8w</bpmn:incoming>
-      <bpmn:outgoing>Flow_1lwg3w2</bpmn:outgoing>
-      <bpmn:outgoing>Flow_14l5yzq</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:userTask id="czyUmuwicWizytePrywatnie" name="Czy umówić wizytę prywatnie?" camunda:assignee="${inicjator}">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="czyPrywatnie" label="Czy Umowic Wizyte Prywatnie?" type="boolean" defaultValue="false" />
-        </camunda:formData>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_01ps1gv</bpmn:incoming>
-      <bpmn:outgoing>Flow_07j7tu7</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:userTask id="odrzucenieWizyty" name="Odebranie odrzucenia rezerwacji wizyty" camunda:formRef="OdrzucenieRezerwacji" camunda:formRefBinding="latest" camunda:assignee="${inicjator}">
       <bpmn:incoming>Flow_1e9dnsp</bpmn:incoming>
-      <bpmn:incoming>Flow_1lwg3w2</bpmn:incoming>
       <bpmn:incoming>Flow_1g9afb9</bpmn:incoming>
       <bpmn:incoming>Flow_07lkgpu</bpmn:incoming>
       <bpmn:incoming>Flow_06vzyh9</bpmn:incoming>
+      <bpmn:incoming>Flow_00mv4jg</bpmn:incoming>
       <bpmn:outgoing>Flow_1f1bvq1</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:endEvent id="Event_0532tvn">
@@ -100,20 +67,6 @@
       <bpmn:outgoing>Flow_1g9afb9</bpmn:outgoing>
       <bpmn:outgoing>Flow_1ekbnkh</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="Activity_0ik3dem" name="Zaproponowanie terminu wizyty" camunda:candidateGroups="recepcja">
-      <bpmn:extensionElements>
-        <camunda:formData>
-          <camunda:formField id="terminForm" label="Termin wizyty" type="date" />
-        </camunda:formData>
-        <camunda:inputOutput>
-          <camunda:outputParameter name="terminForm">"${terminForm}"</camunda:outputParameter>
-          <camunda:outputParameter name="uzasadnienieDecyzjiForm">${"Niestety, nikt nie ma czasu przydzielić termin wizyty"}</camunda:outputParameter>
-        </camunda:inputOutput>
-      </bpmn:extensionElements>
-      <bpmn:incoming>Flow_1npr8q9</bpmn:incoming>
-      <bpmn:incoming>Flow_09ms5x4</bpmn:incoming>
-      <bpmn:outgoing>Flow_0w4yu07</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:userTask id="potwierdzenieWizyty" name="Odebranie propozycji terminu wizyty" camunda:formRef="ZatwierdzenieRezerwacji" camunda:formRefBinding="latest" camunda:assignee="${inicjator}">
       <bpmn:extensionElements>
         <camunda:inputOutput>
@@ -154,7 +107,7 @@
     </bpmn:scriptTask>
     <bpmn:subProcess id="Activity_0id4zh8">
       <bpmn:extensionElements />
-      <bpmn:incoming>Flow_14l5yzq</bpmn:incoming>
+      <bpmn:incoming>Flow_1l5tp7u</bpmn:incoming>
       <bpmn:outgoing>Flow_09ms5x4</bpmn:outgoing>
       <bpmn:startEvent id="Event_1fofhhj">
         <bpmn:outgoing>Flow_110gp0w</bpmn:outgoing>
@@ -181,17 +134,11 @@
       <bpmn:sequenceFlow id="Flow_0x4qqbb" sourceRef="Activity_17mm3zp" targetRef="Activity_0kate1s" />
       <bpmn:sequenceFlow id="Flow_0caich9" sourceRef="Activity_0kate1s" targetRef="Event_0bc9qta" />
     </bpmn:subProcess>
-    <bpmn:boundaryEvent id="Event_06op5i5" attachedToRef="czyUmuwicWizytePrywatnie">
-      <bpmn:outgoing>Flow_06vzyh9</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="TimerEventDefinition_1die181">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT3M</bpmn:timeDuration>
-      </bpmn:timerEventDefinition>
-    </bpmn:boundaryEvent>
     <bpmn:boundaryEvent id="Event_1c1mzrk" attachedToRef="Activity_0id4zh8">
       <bpmn:outgoing>Flow_1ed0t1k</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1j6rz5g" errorRef="oplataErrID" camunda:errorCodeVariable="oplata_errCode" />
     </bpmn:boundaryEvent>
-    <bpmn:sequenceFlow id="Flow_122dno5" sourceRef="start" targetRef="Activity_15l4dy0" />
+    <bpmn:sequenceFlow id="Flow_122dno5" sourceRef="start" targetRef="Gateway_0hmm2i9" />
     <bpmn:sequenceFlow id="Flow_1mao395" sourceRef="Activity_15l4dy0" targetRef="czyKwalifikacjaNFZ" />
     <bpmn:sequenceFlow id="Flow_1npr8q9" name="TAK" sourceRef="czyKwalifikacjaNFZ" targetRef="Activity_0ik3dem">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${czyKwalifikacja}</bpmn:conditionExpression>
@@ -200,13 +147,8 @@
     <bpmn:sequenceFlow id="Flow_0kc4lad" name="TAK" sourceRef="Gateway_00ul3l2" targetRef="WprowadzenieDanychPlatnosci">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${czyPrywatnie}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_04pyo8w" sourceRef="WprowadzenieDanychPlatnosci" targetRef="Gateway_05nfbxl" />
     <bpmn:sequenceFlow id="Flow_07j7tu7" sourceRef="czyUmuwicWizytePrywatnie" targetRef="Gateway_00ul3l2" />
     <bpmn:sequenceFlow id="Flow_1e9dnsp" name="NIE" sourceRef="Gateway_00ul3l2" targetRef="odrzucenieWizyty" />
-    <bpmn:sequenceFlow id="Flow_1lwg3w2" name="NIE" sourceRef="Gateway_05nfbxl" targetRef="odrzucenieWizyty">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!oplata_czyZgoda}</bpmn:conditionExpression>
-    </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_14l5yzq" name="TAK" sourceRef="Gateway_05nfbxl" targetRef="Activity_0id4zh8" />
     <bpmn:sequenceFlow id="Flow_1g9afb9" name="NIE" sourceRef="Gateway_0cv23tq" targetRef="odrzucenieWizyty">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!czyPotwierdzoneForm}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
@@ -221,6 +163,59 @@
     <bpmn:sequenceFlow id="Flow_14goox0" sourceRef="odebranieLekarzMsg" targetRef="odebraniePotwierdzeniaRezerwacjiWizyty" />
     <bpmn:sequenceFlow id="Flow_1cdhts1" sourceRef="AppPowiadomLekarza" targetRef="odebranieLekarzMsg" />
     <bpmn:sequenceFlow id="Flow_1ed0t1k" sourceRef="Event_1c1mzrk" targetRef="Activity_0p1zz0l" />
+    <bpmn:scriptTask id="Activity_0ik3dem" name="Zaproponowanie terminu wizyty" scriptFormat="groovy" camunda:resource="TerminWizyty.groovy">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="terminForm">${execution.getVariable("terminForm")}</camunda:outputParameter>
+          <camunda:outputParameter name="uzasadnienieDecyzjiForm">${"Niestety, nikt nie ma czasu przydzielić termin wizyty"}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_09ms5x4</bpmn:incoming>
+      <bpmn:incoming>Flow_1npr8q9</bpmn:incoming>
+      <bpmn:outgoing>Flow_0w4yu07</bpmn:outgoing>
+    </bpmn:scriptTask>
+    <bpmn:startEvent id="start" camunda:formRef="Wniosek" camunda:formRefBinding="latest" camunda:initiator="inicjator">
+      <bpmn:outgoing>Flow_122dno5</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_01zsu9g" sourceRef="Gateway_0hmm2i9" targetRef="Activity_15l4dy0" />
+    <bpmn:userTask id="czyUmuwicWizytePrywatnie" name="Czy umówić wizytę prywatnie?" camunda:assignee="${inicjator}">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="czyPrywatnie" label="Czy Umowic Wizyte Prywatnie?" type="boolean" defaultValue="false" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_01ps1gv</bpmn:incoming>
+      <bpmn:outgoing>Flow_07j7tu7</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="Event_06op5i5" attachedToRef="czyUmuwicWizytePrywatnie">
+      <bpmn:outgoing>Flow_06vzyh9</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_1die181">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT3M</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:exclusiveGateway id="czyKwalifikacjaNFZ" name="czy Kwalifikacja na NFZ?" default="Flow_01ps1gv">
+      <bpmn:incoming>Flow_1mao395</bpmn:incoming>
+      <bpmn:outgoing>Flow_1npr8q9</bpmn:outgoing>
+      <bpmn:outgoing>Flow_01ps1gv</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:businessRuleTask id="Activity_15l4dy0" name="Ocena Wniosku" camunda:decisionRef="OcenaWnioskuDec">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:outputParameter name="czyKwalifikacja">${decisionResult.getSingleResult().czyKwalifikacja}</camunda:outputParameter>
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_01zsu9g</bpmn:incoming>
+      <bpmn:outgoing>Flow_1mao395</bpmn:outgoing>
+    </bpmn:businessRuleTask>
+    <bpmn:exclusiveGateway id="Gateway_0hmm2i9" name="czy zgoda" default="Flow_01zsu9g">
+      <bpmn:incoming>Flow_122dno5</bpmn:incoming>
+      <bpmn:outgoing>Flow_01zsu9g</bpmn:outgoing>
+      <bpmn:outgoing>Flow_00mv4jg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_00mv4jg" name="nie" sourceRef="Gateway_0hmm2i9" targetRef="odrzucenieWizyty">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!oplata_czyZgoda}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1l5tp7u" sourceRef="WprowadzenieDanychPlatnosci" targetRef="Activity_0id4zh8" />
   </bpmn:process>
   <bpmn:error id="oplataErrID" name="OplataError" errorCode="OplataKwotaErrCode" />
   <bpmn:message id="Message_00o8hqb" name="nowaWizytaMsgg" />
@@ -231,29 +226,16 @@
         <dc:Bounds x="160" y="80" width="1450" height="950" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_18hxppr_di" bpmnElement="Lane_18hxppr" isHorizontal="true">
-        <dc:Bounds x="190" y="760" width="1420" height="270" />
+      <bpmndi:BPMNShape id="Lane_1t8ck6v_di" bpmnElement="Lane_1t8ck6v" isHorizontal="true">
+        <dc:Bounds x="190" y="80" width="1420" height="160" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_17bcg2w_di" bpmnElement="Lane_17bcg2w" isHorizontal="true">
         <dc:Bounds x="190" y="240" width="1420" height="520" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1t8ck6v_di" bpmnElement="Lane_1t8ck6v" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1420" height="160" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_09esueq_di" bpmnElement="start">
-        <dc:Bounds x="242" y="332" width="36" height="36" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0usur3b_di" bpmnElement="czyKwalifikacjaNFZ" isMarkerVisible="true">
-        <dc:Bounds x="465" y="325" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="525" y="336" width="78" height="27" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0jyyqvy_di" bpmnElement="Activity_15l4dy0">
-        <dc:Bounds x="340" y="310" width="100" height="80" />
+      <bpmndi:BPMNShape id="Lane_18hxppr_di" bpmnElement="Lane_18hxppr" isHorizontal="true">
+        <dc:Bounds x="190" y="760" width="1420" height="270" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0oxwu6y_di" bpmnElement="WprowadzenieDanychPlatnosci">
@@ -262,15 +244,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_00ul3l2_di" bpmnElement="Gateway_00ul3l2" isMarkerVisible="true">
         <dc:Bounds x="545" y="505" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_05nfbxl_di" bpmnElement="Gateway_05nfbxl" isMarkerVisible="true">
-        <dc:Bounds x="615" y="645" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="675" y="663" width="52" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0ay4d7m_di" bpmnElement="czyUmuwicWizytePrywatnie">
-        <dc:Bounds x="520" y="400" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_010bgq6_di" bpmnElement="odrzucenieWizyty">
         <dc:Bounds x="1130" y="490" width="100" height="80" />
@@ -283,10 +256,6 @@
         <bpmndi:BPMNLabel>
           <dc:Bounds x="1215" y="330" width="77" height="40" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1rqyue1_di" bpmnElement="Activity_0ik3dem">
-        <dc:Bounds x="740" y="120" width="100" height="80" />
-        <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0nedg08_di" bpmnElement="potwierdzenieWizyty">
         <dc:Bounds x="980" y="260" width="100" height="80" />
@@ -314,6 +283,31 @@
       <bpmndi:BPMNShape id="Activity_12u0bcq_di" bpmnElement="Activity_0p1zz0l">
         <dc:Bounds x="950" y="840" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0r93qt0_di" bpmnElement="Activity_0ik3dem">
+        <dc:Bounds x="740" y="120" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_09esueq_di" bpmnElement="start">
+        <dc:Bounds x="212" y="332" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ay4d7m_di" bpmnElement="czyUmuwicWizytePrywatnie">
+        <dc:Bounds x="550" y="400" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0usur3b_di" bpmnElement="czyKwalifikacjaNFZ" isMarkerVisible="true">
+        <dc:Bounds x="575" y="305" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="635" y="316" width="78" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0jyyqvy_di" bpmnElement="Activity_15l4dy0">
+        <dc:Bounds x="410" y="300" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0hmm2i9_di" bpmnElement="Gateway_0hmm2i9" isMarkerVisible="true">
+        <dc:Bounds x="295" y="325" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="295" y="295" width="50" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_0c2eyhi" bpmnElement="Activity_0id4zh8" isExpanded="true">
         <dc:Bounds x="310" y="790" width="430" height="200" />
@@ -344,46 +338,35 @@
         <di:waypoint x="600" y="880" />
         <di:waypoint x="600" y="848" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Event_1s6pfhc_di" bpmnElement="Event_06op5i5">
-        <dc:Bounds x="602" y="422" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="BPMNShape_04cfg23" bpmnElement="Event_1c1mzrk">
         <dc:Bounds x="722" y="932" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1ed0t1k_di" bpmnElement="Flow_1ed0t1k">
-        <di:waypoint x="758" y="950" />
-        <di:waypoint x="854" y="950" />
-        <di:waypoint x="854" y="880" />
-        <di:waypoint x="950" y="880" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_07lkgpu_di" bpmnElement="Flow_07lkgpu">
-        <di:waypoint x="1000" y="840" />
-        <di:waypoint x="1000" y="720" />
-        <di:waypoint x="1180" y="720" />
-        <di:waypoint x="1180" y="570" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1s6pfhc_di" bpmnElement="Event_06op5i5">
+        <dc:Bounds x="632" y="422" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_122dno5_di" bpmnElement="Flow_122dno5">
-        <di:waypoint x="278" y="350" />
-        <di:waypoint x="340" y="350" />
+        <di:waypoint x="248" y="350" />
+        <di:waypoint x="295" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1mao395_di" bpmnElement="Flow_1mao395">
-        <di:waypoint x="440" y="350" />
-        <di:waypoint x="465" y="350" />
+        <di:waypoint x="510" y="340" />
+        <di:waypoint x="543" y="340" />
+        <di:waypoint x="543" y="330" />
+        <di:waypoint x="575" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1npr8q9_di" bpmnElement="Flow_1npr8q9">
-        <di:waypoint x="490" y="325" />
-        <di:waypoint x="490" y="160" />
+        <di:waypoint x="600" y="305" />
+        <di:waypoint x="600" y="160" />
         <di:waypoint x="740" y="160" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="631" y="142" width="21" height="14" />
+          <dc:Bounds x="674" y="142" width="21" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_01ps1gv_di" bpmnElement="Flow_01ps1gv">
-        <di:waypoint x="490" y="375" />
-        <di:waypoint x="490" y="440" />
-        <di:waypoint x="520" y="440" />
+        <di:waypoint x="600" y="355" />
+        <di:waypoint x="600" y="400" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="496" y="383" width="19" height="14" />
+          <dc:Bounds x="606" y="358" width="19" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0kc4lad_di" bpmnElement="Flow_0kc4lad">
@@ -394,12 +377,10 @@
           <dc:Bounds x="455" y="578" width="21" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_04pyo8w_di" bpmnElement="Flow_04pyo8w">
-        <di:waypoint x="500" y="670" />
-        <di:waypoint x="615" y="670" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_07j7tu7_di" bpmnElement="Flow_07j7tu7">
-        <di:waypoint x="570" y="480" />
+        <di:waypoint x="600" y="480" />
+        <di:waypoint x="600" y="493" />
+        <di:waypoint x="570" y="493" />
         <di:waypoint x="570" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1e9dnsp_di" bpmnElement="Flow_1e9dnsp">
@@ -409,21 +390,6 @@
           <dc:Bounds x="658" y="513" width="19" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1lwg3w2_di" bpmnElement="Flow_1lwg3w2">
-        <di:waypoint x="640" y="645" />
-        <di:waypoint x="640" y="560" />
-        <di:waypoint x="1130" y="560" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="646" y="600" width="19" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_14l5yzq_di" bpmnElement="Flow_14l5yzq">
-        <di:waypoint x="640" y="695" />
-        <di:waypoint x="640" y="790" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="645" y="695" width="21" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1g9afb9_di" bpmnElement="Flow_1g9afb9">
         <di:waypoint x="1180" y="375" />
         <di:waypoint x="1180" y="490" />
@@ -431,8 +397,14 @@
           <dc:Bounds x="1186" y="434" width="19" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_07lkgpu_di" bpmnElement="Flow_07lkgpu">
+        <di:waypoint x="1000" y="840" />
+        <di:waypoint x="1000" y="720" />
+        <di:waypoint x="1180" y="720" />
+        <di:waypoint x="1180" y="570" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_06vzyh9_di" bpmnElement="Flow_06vzyh9">
-        <di:waypoint x="638" y="440" />
+        <di:waypoint x="668" y="440" />
         <di:waypoint x="1140" y="440" />
         <di:waypoint x="1140" y="490" />
       </bpmndi:BPMNEdge>
@@ -473,6 +445,32 @@
       <bpmndi:BPMNEdge id="Flow_1cdhts1_di" bpmnElement="Flow_1cdhts1">
         <di:waypoint x="1198" y="190" />
         <di:waypoint x="1322" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ed0t1k_di" bpmnElement="Flow_1ed0t1k">
+        <di:waypoint x="758" y="950" />
+        <di:waypoint x="854" y="950" />
+        <di:waypoint x="854" y="880" />
+        <di:waypoint x="950" y="880" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01zsu9g_di" bpmnElement="Flow_01zsu9g">
+        <di:waypoint x="345" y="350" />
+        <di:waypoint x="378" y="350" />
+        <di:waypoint x="378" y="340" />
+        <di:waypoint x="410" y="340" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00mv4jg_di" bpmnElement="Flow_00mv4jg">
+        <di:waypoint x="320" y="375" />
+        <di:waypoint x="320" y="600" />
+        <di:waypoint x="900" y="600" />
+        <di:waypoint x="900" y="560" />
+        <di:waypoint x="1130" y="560" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="292" y="511" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1l5tp7u_di" bpmnElement="Flow_1l5tp7u">
+        <di:waypoint x="450" y="710" />
+        <di:waypoint x="450" y="790" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -23,7 +23,7 @@
       <bpmn:incoming>Flow_0oxmrhr</bpmn:incoming>
       <bpmn:outgoing>Flow_1pwkvtc</bpmn:outgoing>
       <bpmn:timerEventDefinition id="TimerEventDefinition_1nwob80">
-        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT30S</bpmn:timeDuration>
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT20S</bpmn:timeDuration>
       </bpmn:timerEventDefinition>
     </bpmn:intermediateCatchEvent>
     <bpmn:sequenceFlow id="Flow_0oxmrhr" sourceRef="forkBramka" targetRef="lekarzWojtek" />

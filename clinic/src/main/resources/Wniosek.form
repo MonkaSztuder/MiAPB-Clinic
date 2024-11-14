@@ -31,7 +31,7 @@
       "key": "wiekFrom"
     },
     {
-      "label": "czy Ubezpieczony?",
+      "label": "Czy jesteś ubezpieczony?",
       "type": "checkbox",
       "layout": {
         "row": "Row_0mpe2y5",
@@ -39,6 +39,17 @@
       },
       "id": "Field_0yckxxb",
       "key": "czyUbezpieczony"
+    },
+    {
+      "label": "Czy zgadzasz się na przetwarzanie danych osobowych?",
+      "type": "checkbox",
+      "layout": {
+        "row": "Row_1e2zxfl",
+        "columns": null
+      },
+      "id": "Field_0sukoa2",
+      "key": "oplata_czyZgoda",
+      "defaultValue": true
     }
   ],
   "type": "default",

@@ -26,10 +26,10 @@
       "label": "Termin Wizyty",
       "type": "textfield",
       "layout": {
-        "row": "Row_1nvk649",
+        "row": "Row_1xd4hnu",
         "columns": null
       },
-      "id": "Field_0ii88p5",
+      "id": "Field_1uiflce",
       "key": "terminForm",
       "readonly": true
     },
